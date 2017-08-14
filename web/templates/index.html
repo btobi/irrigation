@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bewässerung - Statistik</title>
+
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>
+
+</head>
+
+
+<body>
+
+<canvas id="myChart" width="1980" height="800"></canvas>
+<script>
+var ctx = document.getElementById("myChart");
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: [
+            {% for log in datasets[0] %}
+                "{{ log.date }}",
+            {% endfor %}
+        ],
+
+        datasets: [
+            {% for dataset in datasets %}
+                {
+                    label: {{ dataset[0].entity_id }},
+                    data: [
+                        {% for log in dataset %}
+                            {
+                                x: '{{ log.date }}',
+                                y: {{ log.data }}
+                            },
+                        {% endfor %}
+                    ],
+                    fill: false,
+                    pointRadius: 0,
+                    borderColor: "hsl(" + (25 * {{ dataset[0].entity_id }}) + ", 100%, 50%)",
+                    cubicInterpolationMode: "default"
+                },
+            {% endfor %}
+        ]
+    },
+    options: {
+    }
+});
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+version: '3'
+services:
+  # web:
+  #  image: "lectures"
+  #  ports:
+  #   - "5051:5051"
+  db:
+    image: "tobi312/rpi-postgresql"
+    ports:
+      - "5432:5432" # visible at 5433
+    environment:
+      POSTGRES_USER: "irrogation"
+      POSTGRES_PASSWORD: "irrogation"
+      POSTGRES_DB: "irrogation"
