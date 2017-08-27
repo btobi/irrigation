@@ -4,10 +4,11 @@ import logging
 import time
 
 # from telegrambot import botrunner
+from telegrambot import botrunner
 
-print "starting irrogation control app"
+print "starting irrogation bot"
 
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
-irrogation_system.run_irrogation_system()
+botrunner.run_bot()

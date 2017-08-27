@@ -1,7 +1,10 @@
 #!/bin/bash
 pkill -f irrogation.py
-pkill -f web.py
+pkill -f irrogation_bot.py
 
+echo 'Starting irrogation system'
 nohup python irrogation.py &
-nohup python web.py &
+
+echo 'Starting telegram bot for irrogation system'
+nohup python irrogation_bot.py &
 

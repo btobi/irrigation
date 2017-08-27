@@ -4,8 +4,7 @@ from sqlalchemy import desc
 
 from database.models import session, SensorLog
 from irrogation import config
-from irrogation import util
-from . import raspberry
+from irrogation.system import raspberry
 
 
 class BalkonyEntity(object):
@@ -34,9 +33,12 @@ class BalkonyEntity(object):
             self.pump.off()
 
     def waterforce(self):
+        from telegrambot import botrunner
+        botrunner.send_message("Water entitiy {} start.".format(self.no))
         self.pump.on()
-        time.sleep(20)
+        time.sleep(60)
         self.pump.off()
+        botrunner.send_message("Water entitiy {} stop.".format(self.no))
 
     def get_humidity(self):
         last_entries = session.query(SensorLog).filter(SensorLog.type == "HUMIDITY").filter(

@@ -1,7 +1,7 @@
 # coding=utf-8
 from telegrambot.entities import TelegramUser
 
-TELEGRAM_TOKEN = "364469752:AAFciVaa25j-4Y2p4JWnWjUWNvxzPi0GbbQ"
+TELEGRAM_TOKEN = "364469752:AAHX32WkOdlBXUirRhkMCCL80GmvUH0ppbQ"
 
 USERS = [
     TelegramUser(59962169, "Tobi")

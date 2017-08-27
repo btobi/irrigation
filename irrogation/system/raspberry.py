@@ -1,9 +1,9 @@
-import RPi.GPIO as GPIO
+import time
 from spidev import SpiDev
 
-import time
+import RPi.GPIO as GPIO
 
-from irrogation import config
+from irrogation.system import config
 
 GPIO.setmode(GPIO.BOARD)
 

@@ -12,8 +12,6 @@ from sqlalchemy.orm import sessionmaker
 
 from database import config
 
-print "init db"
-
 engine = create_engine(URL(**config.DATABASE))
 
 Base = declarative_base()
